@@ -56,8 +56,10 @@ UkmediaMainWidget::UkmediaMainWidget(QWidget *parent)
     vLayout->addWidget(appWidget);
     vLayout->setSpacing(48);
     this->setLayout(vLayout);
-    this->setMaximumWidth(582);
+    this->setMinimumWidth(582);
     this->setMaximumWidth(910);
+//    appWidget->setMinimumSize(550,82);
+//    appWidget->setMaximumSize(960,400);
     this->setStyleSheet("QWidget{background: white;}");
 
     if (mate_mixer_init() == FALSE) {
@@ -67,7 +69,8 @@ UkmediaMainWidget::UkmediaMainWidget(QWidget *parent)
     soundlist = new QStringList;
     theme_name_list = new QStringList;
     theme_display_name_list = new QStringList;
-    device_name_list = new QStringList;
+    input_device_name_list = new QStringList;
+    output_device_name_list = new QStringList;
     output_stream_list = new QStringList;
     input_stream_list = new QStringList;
     app_volume_list = new QStringList;
@@ -286,23 +289,9 @@ void UkmediaMainWidget::list_device(UkmediaMainWidget *w,MateMixerContext *conte
         QString str =  mate_mixer_device_get_label(MATE_MIXER_DEVICE (list->data));
 
         const gchar *dis_name = mate_mixer_device_get_name(MATE_MIXER_DEVICE (list->data));
-        w->device_name_list->append(dis_name);
-        w->inputWidget->inputDeviceCombobox->addItem(str);
-        w->outputWidget->outputDeviceCombobox->addItem(str);
-//        stream_list = mate_mixer_device_list_streams(MATE_MIXER_DEVICE (list->data));
-//        while (stream_list != nullptr) {
-//            MateMixerStream *s = MATE_MIXER_STREAM(stream_list->data);
-//            const gchar *stream_name = mate_mixer_stream_get_name(s);
-
-//            MateMixerDirection direction = mate_mixer_stream_get_direction(s);
-//            if (direction == MATE_MIXER_DIRECTION_OUTPUT) {
-//                w->output_stream_list->append(stream_name);
-//            }
-//            else if (direction == MATE_MIXER_DIRECTION_INPUT) {
-//                w->input_stream_list->append(stream_name);
-//            }
-//            stream_list = stream_list->next;
-//        }
+//        w->device_name_list->append(dis_name);
+//        w->inputWidget->inputDeviceCombobox->addItem(str);
+//        w->outputWidget->outputDeviceCombobox->addItem(str);
         list = list->next;
     }
 
@@ -335,6 +324,8 @@ void UkmediaMainWidget::add_stream (UkmediaMainWidget *w, MateMixerStream *strea
         }
         name  = mate_mixer_stream_get_name (stream);
         label = mate_mixer_stream_get_label (stream);
+        w->input_device_name_list->append(name);
+        w->inputWidget->inputDeviceCombobox->addItem(label);
         qDebug() << "输入设备名为：" << name << "设备标签为 " << label;
 //                model = gtk_tree_view_get_model (GTK_TREE_VIEW (dialog->priv->input_treeview));
     }
@@ -354,6 +345,8 @@ void UkmediaMainWidget::add_stream (UkmediaMainWidget *w, MateMixerStream *strea
         }
         name  = mate_mixer_stream_get_name (stream);
         label = mate_mixer_stream_get_label (stream);
+        w->output_device_name_list->append(name);
+        w->outputWidget->outputDeviceCombobox->addItem(label);
         qDebug() << "输出设备名为：" << name << "设备标签为 " << label;
 //                model = gtk_tree_view_get_model (GTK_TREE_VIEW (dialog->priv->output_treeview));
 
@@ -720,7 +713,7 @@ void UkmediaMainWidget::add_app_to_appwidget(UkmediaMainWidget *w,int appnum, co
         s->setValue(volume);
     });
 
-    w->app_widget->setStyleSheet("QWidget{width: 552px;height: 150px;"
+    w->app_widget->setStyleSheet("QWidget{"
                               "background: rgba(244,244,244,1);"
                               "border-radius: 4px;}");
 
@@ -908,7 +901,8 @@ void UkmediaMainWidget::add_device (UkmediaMainWidget *w, MateMixerDevice *devic
 
     name  = mate_mixer_device_get_name (device);
     label = mate_mixer_device_get_label (device);
-    w->device_name_list->append(name);
+    w->input_device_name_list->append(name);
+    w->output_device_name_list->append(name);
     //添加设备到组合框
     w->inputWidget->inputDeviceCombobox->addItem(label);
     w->outputWidget->outputDeviceCombobox->addItem(label);
@@ -924,15 +918,19 @@ void UkmediaMainWidget::on_context_device_removed (MateMixerContext *context,con
     MateMixerDevice *dev = mate_mixer_context_get_device(context,name);
     QString str = mate_mixer_device_get_label(dev);
     do {
-        if (name == w->device_name_list->at(count)) {
+        if (name == w->input_device_name_list->at(count)) {
             qDebug() << "device remove";
-            w->device_name_list->removeAt(count);
+            w->output_device_name_list->removeAt(count);
             w->outputWidget->outputDeviceCombobox->removeItem(count);
+            break;
+        }
+        else if (name == w->input_device_name_list->at(count)) {
+            w->input_device_name_list->removeAt(count);
             w->inputWidget->inputDeviceCombobox->removeItem(count);
             break;
         }
         count++;
-        if (count > w->device_name_list->size()) {
+        if (count > w->input_device_name_list->size() || count > w->output_device_name_list->size()  ) {
             qDebug() << "device error";
             break;
         }

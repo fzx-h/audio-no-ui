@@ -141,10 +141,28 @@ UkmediaOutputWidget::UkmediaOutputWidget(QWidget *parent) : QWidget(parent)
                                    "border-radius:10px;}");
     outputDeviceCombobox->setStyleSheet("QComboBox {width:140px;height:30px;background:rgba(248,248,248,1);"
                                         "border:2px solid rgba(218, 227, 250, 1);border-radius:4px;}"
+                                        "QComboBox QAbstractItemView{"
+                                        "font-size: 14px;height: 80px;width: 140px;}"
+                                        "QComboBox QAbstractItemView::item {"
+                                        "height: 30px;}"
+                                        "QComboBox QAbstractItemView::item:hover {"
+                                        "background: rgba(218,227,250,0.9);"
+                                        "border-radius: 2px;"
+                                        "font-color: rgb(225, 0, 0);}"
                                         "QComboBox::drop-down{background-color:rgba(248,248,248,1);}"
                                         "QComboBox:on{background:linear-gradient(0deg,rgba(248,248,248,1) 0%,rgba(248,248,248,0.9) 100%);"
-                                        "border-radius:4px;}");
-
+                                        "border-radius:4px;}"
+                                        "QComboBox::down-arrow:hover{"
+                                        "width:184px;height:30px;"
+                                        "background:linear-gradient(180deg,rgba(218,227,250,0.9),rgba(218,227,250,1));"
+                                        "border-radius:2px;}"
+                                        "QComboBox::down-arrow {"
+                                        "image: url(/usr/share/ukui-media/img/dowm.png);"
+                                        "height:6px;width:11px;}"
+                                        "QComboBox::down-arrow:hover{"
+                                        "width:184px;height:30px;"
+                                        "background:linear-gradient(180deg,rgba(218,227,250,0.9),rgba(218,227,250,1));"
+                                        "border-radius:2px;}");
     outputIconBtn->setStyleSheet("QPushButton{background:transparent;border:0px;padding-left:0px;}");
     this->setStyleSheet("QWidget{width: 552px;height: 150px;"
                         "background: rgba(244,244,244,1);"

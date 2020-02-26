@@ -145,8 +145,10 @@ private:
     QStringList *soundlist;
     QStringList *theme_display_name_list;
     QStringList *theme_name_list;
-    QStringList *device_name_list;
-    QStringList *device_display_name_list;
+    QStringList *input_device_name_list;
+    QStringList *output_device_name_list;
+    QStringList *input_device_display_name_list;
+    QStringList *output_device_display_name_list;
     QStringList *output_stream_list;
     QStringList *input_stream_list;
     QStringList *app_volume_list;
