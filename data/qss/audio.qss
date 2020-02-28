@@ -1,0 +1,170 @@
+/* 未下拉时，QComboBox的样式 */
+QComboBox {
+    width:140px;
+    height:30px;
+    background:rgba(248,248,248,1);
+    border:2px solid rgba(218, 227, 250, 1);
+    border-radius:4px;
+}
+
+QComboBox QAbstractItemView{
+    font-size: 14px;
+    height: 80px;
+    width: 140px;
+}
+
+QComboBox QAbstractItemView::item {
+    height: 30px;
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background: rgba(218,227,250,0.9);
+    border-radius: 2px;
+    font-color: rgb(225, 0, 0);
+}
+
+QComboBox::drop-down:hover{
+    background-color:#ff0000;
+    border-radius:2px;
+}
+/*下拉箭头样式*/
+QComboBox::down-arrow {
+    image: url(/usr/share/ukui-media/img/dowm.png);
+    height:6px;
+    width:11px;
+}
+
+QWidget#Widget{
+    background: white;
+}
+
+QWidget#widget_2{
+    border-top:1px solid white;
+    border-bottom:1px solid white;
+    border-radius:0px
+}
+
+QWidget#widget_5{
+    border-top:1px solid white;
+    border-bottom:1px solid white;
+    border-radius:0px
+}
+
+QWidget#widget_8{
+    border-bottom:1px solid white;
+    border-radius:0px
+}
+
+QWidget{
+    width: 552px;
+    height: 150px;
+    background: rgba(244,244,244,1);
+    border-radius: 4px;
+}
+
+/*音量描述label*/
+QLabel{
+    width:83px;
+    height:14px;
+    font-size:14px;
+    font-family:Noto Sans S Chinese;
+    font-weight:400;
+    color:rgba(67,67,69,1);
+
+}
+QLabel#outputLabel{
+    width:36px;
+    height:18px;
+    font-size:18px;
+    font-family:Noto Sans S Chinese;
+    font-weight:500;
+    color:rgba(0,0,0,1);
+    line-height:40px;
+    opacity:0.85;
+}
+
+QLabel#inputLabel{
+    width:36px;
+    height:18px;
+    font-size:18px;
+    font-family:Noto Sans S Chinese;
+    font-weight:500;
+    color:rgba(0,0,0,1);
+    line-height:40px;
+    opacity:0.85;
+}
+
+QLabel#soundEffectLabel{
+    width:36px;
+    height:18px;
+    font-size:18px;
+    font-family:Noto Sans S Chinese;
+    font-weight:500;
+    color:rgba(0,0,0,1);
+    line-height:40px;
+    opacity:0.85;
+}
+
+QLabel#applicationLabel{
+    width:36px;
+    height:18px;
+    font-size:18px;
+    font-family:Noto Sans S Chinese;
+    font-weight:500;
+    color:rgba(0,0,0,1);
+    line-height:40px;
+    opacity:0.85;
+}
+
+/*滑动条slider*/
+QSlider{
+    width: 178px;
+    height: 20px;
+}
+QSlider::groove:horizontal {
+    border: 0px solid #bbb;
+
+}
+QSlider::sub-page:horizontal {
+    background: #2e8ad2;
+    border-radius: 2px;
+    margin-top:8px;
+    margin-bottom:9px;
+}
+QSlider::add-page:horizontal {
+    background:  rgba(52,70,80,90%);
+    border: 0px solid #777;
+    border-radius: 2px;
+    margin-top:8px;
+    margin-bottom:9px;
+}
+QSlider::handle:horizontal {
+    width: 20px;
+    height: 20px;
+    background: rgb(0, 160, 230);
+    border-radius:10px;
+}
+
+QComboBox::down-arrow:hover{
+width:184px;
+height:30px;
+background:linear-gradient(180deg,rgba(218,227,250,0.9),rgba(218,227,250,1));
+border-radius:2px;
+
+}
+
+/*应用tableview*/
+QTableView {
+    background-color: rgba(244,244,244,1);
+    border-radius: 2px;
+    gridline-color: red;
+    padding: 4px 2px 4px 2px;
+}
+
+QTableView::item{
+    height: 40px;
+    padding-top: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-bottom: 10px;
+}

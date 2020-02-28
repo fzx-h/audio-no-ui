@@ -11,6 +11,7 @@ extern "C" {
 #include <libxml/tree.h>
 #include <libmatemixer/matemixer.h>
 }
+#include <QMediaPlayer>
 #define KEY_SOUNDS_SCHEMA "org.mate.sound"
 #define EVENT_SOUNDS_KEY "event-sounds"
 #define INPUT_SOUNDS_KEY "input-feedback-sounds"
@@ -129,7 +130,7 @@ private Q_SLOTS:
     void output_device_combox_index_changed_slot(int index);
     void input_device_combox_index_changed_slot(int index);
     void input_level_value_changed_slot();
-
+    void player_state_changed_slot(QMediaPlayer::State state);
 private:
     UkmediaApplicationWidget *appWidget;
     UkmediaInputWidget *inputWidget;
@@ -154,6 +155,7 @@ private:
     QStringList *app_volume_list;
     QStringList *stream_control_list;
 
+    QMediaPlayer *player;
     GSettings *sound_settings;
 //    QLabel *app_display_label;
 

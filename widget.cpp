@@ -16,7 +16,6 @@ extern "C" {
 #include <QSpacerItem>
 #include <QListView>
 #include <QScrollBar>
-#include <QMediaPlayer>
 
 #define MATE_DESKTOP_USE_UNSTABLE_API
 #define VERSION "1.12.1"
@@ -2045,10 +2044,26 @@ xmlChar *UkmediaMainWidget::xml_get_and_trim_names (xmlNodePtr node)
 void UkmediaMainWidget::play_alret_sound_from_path (QString path)
 {
    QMediaPlayer *player = new QMediaPlayer;
+   QString path1("/home/kylin/chineseStyle-startup.wav");
 //   connect(w->player, SIGNAL(positionChanged(qint64)), w, SLOT(positionChanged(qint64)));
    player->setMedia(QUrl::fromLocalFile(path));
+   qDebug() << path1 << player->state() << player->mediaStatus();
+//   player->setMedia(QUrl::fromLocalFile("/home/kylin/chineseStyle-startup.wav"));
 //   w->player->setVolume(30);
    player->play();
+   connect(player,&QMediaPlayer::stateChanged,[=](QMediaPlayer::State state){
+       delete player;
+       qDebug() << "play state is " << state;
+   });
+//   connect(player,SIGNAL(stateChanged(QMediaPlayer::State state)),w,SLOT(player_state_changed_slot(QMediaPlayer::State state)));
+}
+
+/*
+    播放主题声音的状态改变
+*/
+void UkmediaMainWidget::player_state_changed_slot(QMediaPlayer::State state)
+{
+    qDebug() << "play state is " << state;
 }
 
 /*
@@ -2412,5 +2427,5 @@ gboolean UkmediaMainWidget::update_default_input_stream (UkmediaMainWidget *w)
 
 UkmediaMainWidget::~UkmediaMainWidget()
 {
-
+//    delete player;
 }
