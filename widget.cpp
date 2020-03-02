@@ -389,7 +389,7 @@ void UkmediaMainWidget::add_application_control (UkmediaMainWidget *w, MateMixer
     MateMixerAppInfo *info;
     guint app_count;
     MateMixerDirection direction = MATE_MIXER_DIRECTION_UNKNOWN;
-//        GtkWidget                      *bar;
+    qDebug() << "add application control";
     const gchar *app_id;
     const gchar *app_name;
     const gchar *app_icon;
@@ -503,6 +503,7 @@ void UkmediaMainWidget::remove_application_control (UkmediaMainWidget *w,const g
 {
     g_debug ("Removing application stream %s", name);
 
+    qDebug() << "remove application control";
     int index = w->app_volume_list->indexOf(name);
     int i = w->stream_control_list->indexOf(name);
 
@@ -2044,26 +2045,30 @@ xmlChar *UkmediaMainWidget::xml_get_and_trim_names (xmlNodePtr node)
 void UkmediaMainWidget::play_alret_sound_from_path (QString path)
 {
    QMediaPlayer *player = new QMediaPlayer;
-   QString path1("/home/kylin/chineseStyle-startup.wav");
 //   connect(w->player, SIGNAL(positionChanged(qint64)), w, SLOT(positionChanged(qint64)));
    player->setMedia(QUrl::fromLocalFile(path));
-   qDebug() << path1 << player->state() << player->mediaStatus();
+   qDebug() << path << player->state() << player->mediaStatus();
 //   player->setMedia(QUrl::fromLocalFile("/home/kylin/chineseStyle-startup.wav"));
 //   w->player->setVolume(30);
    player->play();
    connect(player,&QMediaPlayer::stateChanged,[=](QMediaPlayer::State state){
-       delete player;
-       qDebug() << "play state is " << state;
+//       delete player;
+        switch (state) {
+        case QMediaPlayer::StoppedState:
+            qDebug() << "状态" << "QMediaPlayer::StoppedState";
+           break;
+        case QMediaPlayer::PlayingState:
+            qDebug() << "状态" << "QMediaPlayer::PlayingState";
+            break;
+        default:
+            qDebug() << "状态" << "QMediaPlayer::PausedState";
+           break;
+        }
+        qDebug() << "play state is " << state;
+        delete player;
+        qDebug() <<2068;
    });
 //   connect(player,SIGNAL(stateChanged(QMediaPlayer::State state)),w,SLOT(player_state_changed_slot(QMediaPlayer::State state)));
-}
-
-/*
-    播放主题声音的状态改变
-*/
-void UkmediaMainWidget::player_state_changed_slot(QMediaPlayer::State state)
-{
-    qDebug() << "play state is " << state;
 }
 
 /*
@@ -2092,13 +2097,13 @@ void UkmediaMainWidget::output_device_combox_index_changed_slot(int index)
     QString name = output_stream_list->at(index);
     //QString转换为const char *
     const char *device_name = name.toLocal8Bit();
-
+    qDebug() << "shebei ming " << name;
     MateMixerStream *stream = mate_mixer_context_get_stream(context,device_name);
 
     flags = mate_mixer_context_get_backend_flags (context);
 
     if (flags & MATE_MIXER_BACKEND_CAN_SET_DEFAULT_OUTPUT_STREAM) {
-       mate_mixer_context_set_default_output_stream (context, stream);
+        mate_mixer_context_set_default_output_stream (context, stream);
     }
     else
         set_output_stream (this, stream);

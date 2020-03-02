@@ -130,7 +130,6 @@ private Q_SLOTS:
     void output_device_combox_index_changed_slot(int index);
     void input_device_combox_index_changed_slot(int index);
     void input_level_value_changed_slot();
-    void player_state_changed_slot(QMediaPlayer::State state);
 private:
     UkmediaApplicationWidget *appWidget;
     UkmediaInputWidget *inputWidget;
