@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QPushButton>
-#include "ukmediaoutputwidget.h"
+#include "ukmedia_output_widget.h"
 class UkmediaApplicationWidget : public QWidget
 {
     Q_OBJECT
@@ -17,17 +17,16 @@ Q_SIGNALS:
 public Q_SLOTS:
 
 private:
-    QLabel *applicationLabel;
-    QLabel *noAppLabel;
-
-    QWidget *appWid;
-    QStringList *app_volume_list;
-    QLabel *appLabel;
-    QLabel *appIconLabel;
-    QPushButton *appIconBtn;
-    QLabel *appVolumeLabel;
-    AudioSlider *appSlider;
-    QGridLayout *gridlayout;
+    QLabel *m_pApplicationLabel;
+    QLabel *m_pNoAppLabel;
+    QWidget *m_pAppWid;
+    QStringList *m_pAppVolumeList;
+    QLabel *m_pAppLabel;
+    QLabel *m_pAppIconLabel;
+    QPushButton *m_pAppIconBtn;
+    QLabel *m_pAppVolumeLabel;
+    AudioSlider *m_pAppSlider;
+    QGridLayout *m_pGridlayout;
 };
 
 #endif // UKMEDIAAPPLICATIONWIDGET_H

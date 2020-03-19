@@ -45,21 +45,21 @@ Q_SIGNALS:
 public Q_SLOTS:
 
 private:
-    QWidget *outputWidget;
-    QWidget *outputDeviceWidget;
-    QWidget *masterVolumeWidget;
-    QWidget *channelBalanceWidget;
-    QLabel *outputLabel;
-    QLabel *outputDeviceLabel;
-    QComboBox *outputDeviceCombobox;
-    QLabel *opVolumeLabel;
-    QPushButton *outputIconBtn;
-    AudioSlider *opVolumeSlider;
-    QLabel *opVolumePercentLabel;
-    QLabel *opBalanceLabel;
-    QLabel *leftBalanceLabel;
-    AudioSlider *opBalanceSlider;
-    QLabel *rightBalanceLabel;
+    QWidget *m_pOutputWidget;
+    QWidget *m_pOutputDeviceWidget;
+    QWidget *m_pMasterVolumeWidget;
+    QWidget *m_pChannelBalanceWidget;
+    QLabel *m_pOutputLabel;
+    QLabel *m_pOutputDeviceLabel;
+    QComboBox *m_pOutputDeviceCombobox;
+    QLabel *m_pOpVolumeLabel;
+    QPushButton *m_pOutputIconBtn;
+    AudioSlider *m_pOpVolumeSlider;
+    QLabel *m_pOpVolumePercentLabel;
+    QLabel *m_pOpBalanceLabel;
+    QLabel *m_pLeftBalanceLabel;
+    AudioSlider *m_pOpBalanceSlider;
+    QLabel *m_pRightBalanceLabel;
 };
 
 #endif // UKMEDIAOUTPUTWIDGET_H

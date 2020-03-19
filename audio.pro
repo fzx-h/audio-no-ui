@@ -33,18 +33,18 @@ PKGCONFIG += libmatemixer \
 
 SOURCES += \
         main.cpp \
-        widget.cpp \
-    ukmediaoutputwidget.cpp \
-    ukmediainputwidget.cpp \
-    ukmediaapplicationwidget.cpp \
-    ukmediasoundeffectswidget.cpp
+    ukmedia_application_widget.cpp \
+    ukmedia_input_widget.cpp \
+    ukmedia_main_widget.cpp \
+    ukmedia_output_widget.cpp \
+    ukmedia_sound_effects_widget.cpp
 
 HEADERS += \
-        widget.h \
-    ukmediaoutputwidget.h \
-    ukmediainputwidget.h \
-    ukmediaapplicationwidget.h \
-    ukmediasoundeffectswidget.h
+    ukmedia_application_widget.h \
+    ukmedia_input_widget.h \
+    ukmedia_main_widget.h \
+    ukmedia_output_widget.h \
+    ukmedia_sound_effects_widget.h
 
 TRANSLATIONS += translations/audio-zh_CN.ts
 
@@ -52,3 +52,6 @@ TRANSLATIONS += translations/audio-zh_CN.ts
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    res.qrc
