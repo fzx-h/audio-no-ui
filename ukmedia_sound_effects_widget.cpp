@@ -55,31 +55,31 @@ UkmediaSoundEffectsWidget::UkmediaSoundEffectsWidget(QWidget *parent) : QWidget(
     QSpacerItem *item2 = new QSpacerItem(48,20,QSizePolicy::Fixed);
     //添加布局
     QHBoxLayout *themeLayout = new QHBoxLayout(m_pThemeWidget);
-    themeLayout->addItem(item1);
+    themeLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     themeLayout->addWidget(m_pSoundThemeLabel);
-    themeLayout->addItem(item2);
+    themeLayout->addItem(new QSpacerItem(48,20,QSizePolicy::Fixed));
     themeLayout->addWidget(m_pSoundThemeCombobox);
-    themeLayout->addItem(item1);
+    themeLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     themeLayout->setSpacing(0);
     m_pThemeWidget->setLayout(themeLayout);
     m_pThemeWidget->layout()->setContentsMargins(0,0,0,0);
 
     QHBoxLayout *shutdownLayout = new QHBoxLayout(m_pShutDownWidget);
-    shutdownLayout->addItem(item1);
+    shutdownLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     shutdownLayout->addWidget(m_pShutdownlabel);
-    shutdownLayout->addItem(item2);
+    shutdownLayout->addItem(new QSpacerItem(48,20,QSizePolicy::Fixed));
     shutdownLayout->addWidget(m_pShutdownCombobox);
-    shutdownLayout->addItem(item1);
+    shutdownLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     shutdownLayout->setSpacing(0);
     m_pShutDownWidget->setLayout(shutdownLayout);
     m_pShutDownWidget->layout()->setContentsMargins(0,0,0,0);
 
     QHBoxLayout *lagoutLayout = new QHBoxLayout(m_pLagoutWidget);
-    lagoutLayout->addItem(item1);
+    lagoutLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     lagoutLayout->addWidget(m_pLagoutLabel);
-    lagoutLayout->addItem(item2);
+    lagoutLayout->addItem(new QSpacerItem(48,20,QSizePolicy::Fixed));
     lagoutLayout->addWidget(m_pLagoutCombobox);
-    lagoutLayout->addItem(item1);
+    lagoutLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     lagoutLayout->setSpacing(0);
     m_pLagoutWidget->setLayout(lagoutLayout);
     m_pLagoutWidget->layout()->setContentsMargins(0,0,0,0);
@@ -87,9 +87,9 @@ UkmediaSoundEffectsWidget::UkmediaSoundEffectsWidget(QWidget *parent) : QWidget(
     //进行整体布局
     QVBoxLayout *vLayout = new QVBoxLayout(this);
     vLayout->addWidget(m_pSoundEffectLabel);
-    vLayout->addItem(item1);
+    vLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     vLayout->addWidget(m_pThemeWidget);
-    vLayout->addItem(item1);
+    vLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     vLayout->addWidget(m_pShutDownWidget);
     vLayout->addWidget(m_pLagoutWidget);
     this->setLayout(vLayout);
@@ -148,6 +148,30 @@ UkmediaSoundEffectsWidget::UkmediaSoundEffectsWidget(QWidget *parent) : QWidget(
                                     "background:linear-gradient(180deg,rgba(218,227,250,0.9),rgba(218,227,250,1));"
                                     "border-radius:2px;}");
 
+    m_pLagoutCombobox->setStyleSheet("QComboBox {width:140px;height:30px;background:rgba(248,248,248,1);"
+                                     "border:2px solid rgba(218, 227, 250, 1);border-radius:4px;}"
+                                     "QComboBox QAbstractItemView{"
+                                     "font-size: 14px;height: 80px;width: 140px;}"
+                                     "QComboBox QAbstractItemView::item {"
+                                     "height: 30px;}"
+                                     "QComboBox QAbstractItemView::item:hover {"
+                                     "background: rgba(218,227,250,0.9);"
+                                     "border-radius: 2px;"
+                                     "font-color: rgb(225, 0, 0);}"
+                                     "QComboBox::drop-down{background-color:rgba(248,248,248,1);}"
+                                     "QComboBox:on{background:linear-gradient(0deg,rgba(248,248,248,1) 0%,rgba(248,248,248,0.9) 100%);"
+                                     "border-radius:4px;}"
+                                     "QComboBox::down-arrow:hover{"
+                                     "width:184px;height:30px;"
+                                     "background:linear-gradient(180deg,rgba(218,227,250,0.9),rgba(218,227,250,1));"
+                                     "border-radius:2px;}"
+                                     "QComboBox::down-arrow {"
+                                     "image: url(/usr/share/ukui-media/img/dowm.png);"
+                                     "height:6px;width:11px;}"
+                                     "QComboBox::down-arrow:hover{"
+                                     "width:184px;height:30px;"
+                                     "background:linear-gradient(180deg,rgba(218,227,250,0.9),rgba(218,227,250,1));"
+                                     "border-radius:2px;}");
 
     m_pSoundEffectLabel->setStyleSheet("QLabel{font-size:18px;"
                                      "font-family:Noto Sans S Chinese;"

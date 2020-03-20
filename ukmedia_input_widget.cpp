@@ -64,11 +64,11 @@ UkmediaInputWidget::UkmediaInputWidget(QWidget *parent) : QWidget(parent)
     QSpacerItem *item1 = new QSpacerItem(16,20,QSizePolicy::Fixed);
     QSpacerItem *item2 = new QSpacerItem(48,20,QSizePolicy::Fixed);
     m_pInputDeviceLabel->setFixedSize(83,24);
-    m_pInputDeviceLayout->addItem(item1);
+    m_pInputDeviceLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     m_pInputDeviceLayout->addWidget(m_pInputDeviceLabel);
-    m_pInputDeviceLayout->addItem(item2);
+    m_pInputDeviceLayout->addItem(new QSpacerItem(48,20,QSizePolicy::Fixed));
     m_pInputDeviceLayout->addWidget(m_pInputDeviceCombobox);
-    m_pInputDeviceLayout->addItem(item1);
+    m_pInputDeviceLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     m_pInputDeviceLayout->setSpacing(0);
     m_pInputDeviceWidget->setLayout(m_pInputDeviceLayout);
     m_pInputDeviceLayout->layout()->setContentsMargins(0,0,0,0);
@@ -78,15 +78,15 @@ UkmediaInputWidget::UkmediaInputWidget(QWidget *parent) : QWidget(parent)
     m_pInputIconBtn->setFixedSize(24,24);
     m_pIpVolumeSlider->setFixedHeight(22);
     m_pIpVolumePercentLabel->setFixedSize(36,24);
-    m_pMasterLayout->addItem(item1);
+    m_pMasterLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     m_pMasterLayout->addWidget(m_pIpVolumeLabel);
-    m_pMasterLayout->addItem(item2);
+    m_pMasterLayout->addItem(new QSpacerItem(48,20,QSizePolicy::Fixed));
     m_pMasterLayout->addWidget(m_pInputIconBtn);
-    m_pMasterLayout->addItem(item1);
+    m_pMasterLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     m_pMasterLayout->addWidget(m_pIpVolumeSlider);
-    m_pMasterLayout->addItem(item1);
+    m_pMasterLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     m_pMasterLayout->addWidget(m_pIpVolumePercentLabel);
-    m_pMasterLayout->addItem(item1);
+    m_pMasterLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     m_pMasterLayout->setSpacing(0);
     m_pVolumeWidget->setLayout(m_pMasterLayout);
     m_pVolumeWidget->layout()->setContentsMargins(0,0,0,0);
@@ -96,15 +96,15 @@ UkmediaInputWidget::UkmediaInputWidget(QWidget *parent) : QWidget(parent)
     m_pLowLevelLabel->setFixedSize(24,24);
     m_pInputLevelSlider->setFixedHeight(22);
     m_pHighLevelLabel->setFixedSize(36,24);
-    m_pSoundLayout->addItem(item1);
+    m_pSoundLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     m_pSoundLayout->addWidget(m_pInputLevelLabel);
-    m_pSoundLayout->addItem(item2);
+    m_pSoundLayout->addItem(new QSpacerItem(48,20,QSizePolicy::Fixed));
     m_pSoundLayout->addWidget(m_pLowLevelLabel);
-    m_pSoundLayout->addItem(item1);
+    m_pSoundLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     m_pSoundLayout->addWidget(m_pInputLevelSlider);
-    m_pSoundLayout->addItem(item1);
+    m_pSoundLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     m_pSoundLayout->addWidget(m_pHighLevelLabel);
-    m_pSoundLayout->addItem(item1);
+    m_pSoundLayout->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     m_pSoundLayout->setSpacing(0);
     m_pInputLevelWidget->setLayout(m_pSoundLayout);
     m_pInputLevelWidget->layout()->setContentsMargins(0,0,0,0);
@@ -119,7 +119,7 @@ UkmediaInputWidget::UkmediaInputWidget(QWidget *parent) : QWidget(parent)
 
     QVBoxLayout *m_pVlayout1 = new QVBoxLayout(this);
     m_pVlayout1->addWidget(m_pInputLabel);
-    m_pVlayout1->addItem(item1);
+    m_pVlayout1->addItem(new QSpacerItem(16,20,QSizePolicy::Fixed));
     m_pVlayout1->addWidget(m_pInputWidget);
     this->setLayout(m_pVlayout1);
     this->layout()->setContentsMargins(0,0,0,0);
@@ -200,30 +200,30 @@ UkmediaInputWidget::UkmediaInputWidget(QWidget *parent) : QWidget(parent)
                                    "background: rgb(61,107,229);"
                                    "border-radius:10px;}");
 
-//    inputDeviceCombobox->setStyleSheet("QComboBox {width:140px;height:30px;background:rgba(248,248,248,1);"
-//                                       "border:2px solid rgba(218, 227, 250, 1);border-radius:4px;}"
-//                                       "QComboBox QAbstractItemView{"
-//                                       "font-size: 14px;height: 80px;width: 140px;}"
-//                                       "QComboBox QAbstractItemView::item {"
-//                                       "height: 30px;}"
-//                                       "QComboBox QAbstractItemView::item:hover {"
-//                                       "background: rgba(218,227,250,0.9);"
-//                                       "border-radius: 2px;"
-//                                       "font-color: rgb(225, 0, 0);}"
-//                                       "QComboBox::drop-down{background-color:rgba(248,248,248,1);}"
-//                                       "QComboBox:on{background:linear-gradient(0deg,rgba(248,248,248,1) 0%,rgba(248,248,248,0.9) 100%);"
-//                                       "border-radius:4px;}"
-//                                       "QComboBox::down-arrow:hover{"
-//                                       "width:184px;height:30px;"
-//                                       "background:linear-gradient(180deg,rgba(218,227,250,0.9),rgba(218,227,250,1));"
-//                                       "border-radius:2px;}"
-//                                       "QComboBox::down-arrow {"
-//                                       "image: url(/usr/share/ukui-media/img/dowm.png);"
-//                                       "height:6px;width:11px;}"
-//                                       "QComboBox::down-arrow:hover{"
-//                                       "width:184px;height:30px;"
-//                                       "background:linear-gradient(180deg,rgba(218,227,250,0.9),rgba(218,227,250,1));"
-//                                       "border-radius:2px;}");
+    m_pInputDeviceCombobox->setStyleSheet("QComboBox {width:140px;height:30px;background:rgba(248,248,248,1);"
+                                       "border:2px solid rgba(218, 227, 250, 1);border-radius:4px;}"
+                                       "QComboBox QAbstractItemView{"
+                                       "font-size: 14px;height: 80px;width: 140px;}"
+                                       "QComboBox QAbstractItemView::item {"
+                                       "height: 30px;}"
+                                       "QComboBox QAbstractItemView::item:hover {"
+                                       "background: rgba(218,227,250,0.9);"
+                                       "border-radius: 2px;"
+                                       "font-color: rgb(225, 0, 0);}"
+                                       "QComboBox::drop-down{background-color:rgba(248,248,248,1);}"
+                                       "QComboBox:on{background:linear-gradient(0deg,rgba(248,248,248,1) 0%,rgba(248,248,248,0.9) 100%);"
+                                       "border-radius:4px;}"
+                                       "QComboBox::down-arrow:hover{"
+                                       "width:184px;height:30px;"
+                                       "background:linear-gradient(180deg,rgba(218,227,250,0.9),rgba(218,227,250,1));"
+                                       "border-radius:2px;}"
+                                       "QComboBox::down-arrow {"
+                                       "image: url(/usr/share/ukui-media/img/dowm.png);"
+                                       "height:6px;width:11px;}"
+                                       "QComboBox::down-arrow:hover{"
+                                       "width:184px;height:30px;"
+                                       "background:linear-gradient(180deg,rgba(218,227,250,0.9),rgba(218,227,250,1));"
+                                       "border-radius:2px;}");
 
     m_pInputIconBtn->setStyleSheet("QPushButton{background:transparent;border:0px;padding-left:0px;}");
 
